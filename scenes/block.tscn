@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk2yhvr30mqvp"]
+
+[ext_resource type="Script" path="res://scripts/block.gd" id="1_k5l8l"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2k775"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nj2pt"]
+
+[node name="Block" type="Area2D"]
+script = ExtResource("1_k5l8l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.52549, 1, 1)
+texture = SubResource("PlaceholderTexture2D_2k775")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nj2pt")
