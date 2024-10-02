@@ -11,41 +11,41 @@ extends Node2D
 @export var block_height = 100
 @export var blocks_gap = 50
 
-var clicks
+var blocks_summary = {}
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	clicks = {
-		"red": 0,
-		"black": 0,
-		"blue": 0,
-		"total": 0
-	}
+	for color in GlobalSettings.color_map.values():
+		blocks_summary[color] = 0
+	blocks_summary["Total"] = 0
+	
 	var blocks_x = get_viewport().size[0] / 2 - (block_width + blocks_gap) * total_cols / 2
 	blocks.position.x = blocks_x + (block_width + blocks_gap) / 2
 	_draw_blocks()
+	hud.update(blocks_summary)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func _draw_blocks():
+func _draw_blocks() -> void:
 	for col in range(total_cols):
 		for row in range(total_rows):
 			_create_block(col, row)
 
 
-func _create_block(col, row):
+func _create_block(col, row) -> void:
 	var block_instance = block_scene.instantiate()
 	block_instance.position.x = (block_width + blocks_gap) * col
 	block_instance.position.y = (block_height + blocks_gap) * row
 	blocks.add_child(block_instance)
 	block_instance.set_size(block_width, block_height)
+	blocks_summary[block_instance.color_map[block_instance.color_number]] += 1
 
-func on_click(color):
-	clicks[color] += 1
-	clicks["total"] += 1
-	hud.get_node(color.capitalize()).text = color.capitalize() + ": " + str(clicks[color])
-	hud.get_node("Total").text = "Total: " + str(clicks["total"])
+
+func on_click(color_number) -> void:
+	blocks_summary[GlobalSettings.color_map[color_number]] += 1
+	if color_number == 1:
+		color_number = len(GlobalSettings.color_map)
+	else:
+		color_number -= 1
+	blocks_summary[GlobalSettings.color_map[color_number]] -= 1
+	blocks_summary["Total"] += 1
+	hud.update(blocks_summary)

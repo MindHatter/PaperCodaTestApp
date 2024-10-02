@@ -1,11 +1,10 @@
 # Paper Coda Test Application
 
 ## Features
-1. Blocks grid generator
-2. No one sprite
-
-## Possible updates
-- generate hud by set of color
+1. Global settings for color map setup
+2. Blocks grid generator
+3. HUD generator based set of color
+4. No one sprite
 
 ## Build link
-[here](https://drive.google.com/file/d/1FRfj2FFhzfFupYo4HGG0kxE-VGbTVl6Z/view?usp=sharing)
+[here](https://drive.google.com/file/d/1S9nihco3RWrHuoXs8w4YLJgJlZkKH6J3/view?usp=sharing)
