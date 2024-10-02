@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c8tpsoyjc4siy"]
+
+[node name="HUD" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Clicks" type="Label" parent="."]
+layout_mode = 2
+text = "Clicks"
+
+[node name="Red" type="Label" parent="."]
+layout_mode = 2
+text = "Red: 0"
+
+[node name="Black" type="Label" parent="."]
+layout_mode = 2
+text = "Black: 0"
+
+[node name="Blue" type="Label" parent="."]
+layout_mode = 2
+text = "Blue: 0"
+
+[node name="Total" type="Label" parent="."]
+layout_mode = 2
+text = "Total: 0"

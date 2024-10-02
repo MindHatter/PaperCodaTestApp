@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://cd60r2vwyc5dn"]
+[gd_scene load_steps=3 format=3 uid="uid://cd60r2vwyc5dn"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_5llq8"]
+[ext_resource type="PackedScene" uid="uid://c8tpsoyjc4siy" path="res://scenes/hud.tscn" id="2_hv2td"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_5llq8")
 
 [node name="Blocks" type="Node2D" parent="."]
 position = Vector2(191, 250)
+
+[node name="HUD" parent="." instance=ExtResource("2_hv2td")]

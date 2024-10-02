@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var block_scene = preload("res://scenes/block.tscn")
 @onready var blocks = $Blocks
+@onready var hud = $HUD
 
 # Grid setup
 @export var total_cols = 4
@@ -34,3 +35,4 @@ func _create_block(col, row):
 	block_instance.position.y = (block_height + blocks_gap) * row
 	blocks.add_child(block_instance)
 	block_instance.set_size(block_width, block_height)
+
