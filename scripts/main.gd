@@ -11,8 +11,16 @@ extends Node2D
 @export var block_height = 100
 @export var blocks_gap = 50
 
+var clicks
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	clicks = {
+		"red": 0,
+		"black": 0,
+		"blue": 0,
+		"total": 0
+	}
 	var blocks_x = get_viewport().size[0] / 2 - (block_width + blocks_gap) * total_cols / 2
 	blocks.position.x = blocks_x + (block_width + blocks_gap) / 2
 	_draw_blocks()
@@ -36,3 +44,8 @@ func _create_block(col, row):
 	blocks.add_child(block_instance)
 	block_instance.set_size(block_width, block_height)
 
+func on_click(color):
+	clicks[color] += 1
+	clicks["total"] += 1
+	hud.get_node(color.capitalize()).text = color.capitalize() + ": " + str(clicks[color])
+	hud.get_node("Total").text = "Total: " + str(clicks["total"])

@@ -1,5 +1,7 @@
 extends Area2D
 
+@onready var main = get_tree().get_root().get_node("Main")
+
 @export var block_width = 20
 @export var block_height = 10
 
@@ -38,3 +40,5 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			color_number += 1
 		print(color_number)
 		update_color()
+		
+		main.on_click(color_map[color_number])
